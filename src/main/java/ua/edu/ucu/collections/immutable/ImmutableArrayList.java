@@ -2,7 +2,6 @@ package ua.edu.ucu.collections.immutable;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 public final class ImmutableArrayList implements ImmutableList {
     private Object[] arrayList;
@@ -77,7 +76,8 @@ public final class ImmutableArrayList implements ImmutableList {
 
         Object[] newArray = new Object[this.length - 1];
 
-        for (int i = 0, j = 0; i < this.length; i++) {
+        int j = 0;
+        for (int i = 0; i < this.length; i++) {
             if (i == index) {
                 continue;
             }
@@ -101,7 +101,7 @@ public final class ImmutableArrayList implements ImmutableList {
     @Override
     public int indexOf(Object e) {
         for (int i = 0; i < this.length; i++) {
-            if (this.arrayList[i].equals(e)){
+            if (this.arrayList[i].equals(e)) {
                 return i;
             }
         }
@@ -127,33 +127,5 @@ public final class ImmutableArrayList implements ImmutableList {
     @Override
     public Object[] toArray() {
         return Arrays.copyOf(this.arrayList, this.length);
-    }
-
-    public static void main(String[] args) {
-        ImmutableArrayList list = new ImmutableArrayList(new Object[] {1, 2, 3});
-//        ImmutableList list1 = list.addAll(new Object[] {4, 4});
-        ImmutableList list1 = list.addAll(0,  new Object[] {9, 9 ,9});
-        ImmutableList list2 = list.add(1, 123);
-        ImmutableList list3 = list.remove(2);
-        ImmutableList list4 = list.set(2, 890);
-        ImmutableList list5 = list.clear();
-        ImmutableArrayList emptyList = new ImmutableArrayList();
-
-
-
-
-
-
-        System.out.println(Arrays.toString(list1.toArray()));
-        System.out.println(Arrays.toString(list2.toArray()));
-        System.out.println(Arrays.toString(list3.toArray()));
-        System.out.println(Arrays.toString(list4.toArray()));
-        System.out.println(list.indexOf(890));
-        System.out.println(Arrays.toString(list5.toArray()));
-        System.out.println(emptyList.isEmpty());
-
-
-
-
     }
 }

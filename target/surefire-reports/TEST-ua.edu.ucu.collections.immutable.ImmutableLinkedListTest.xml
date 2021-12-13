@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="20" failures="0" name="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" time="0.005" errors="0" skipped="0">
+<testsuite tests="20" failures="0" name="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.2.2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -58,22 +58,22 @@
   </properties>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGetFirst" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testToArray" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAddAll1" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAddAll1" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAddAll2" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAddLast" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGet" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGet" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testSet" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testClear" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAdd1" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAdd1" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAdd2" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testSize" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testSize" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testRemoveFirst" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testAddFirst" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGetHead" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGetLast" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testGetTail" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testRemoveLast" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testIndexOf" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testIndexOf" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testIsEmpty" time="0"/>
   <testcase classname="ua.edu.ucu.collections.immutable.ImmutableLinkedListTest" name="testRemove" time="0"/>
 </testsuite>

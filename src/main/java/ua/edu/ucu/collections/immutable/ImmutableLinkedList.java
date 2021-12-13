@@ -18,7 +18,8 @@ public final class ImmutableLinkedList implements ImmutableList {
             Node previous = null;
             for (int i = 0; i < elements.length; i++) {
                 Node node = new Node(elements[i]);
-                node.setPrevious(previous); // set previous node as null for head node (first node)
+                node.setPrevious(previous); // set previous node as
+                                            // null for head node (first node)
 
                 if (previous != null) {
                     previous.setNext(node);
@@ -30,7 +31,8 @@ public final class ImmutableLinkedList implements ImmutableList {
                 }
 
                 if (i == elements.length - 1) {
-                    node.setNext(null); // set next node as null for tail node (the last one)
+                    node.setNext(null); // set next node as
+                                        // null for tail node (the last one)
                     this.tail = node;
                 }
             }
@@ -108,8 +110,8 @@ public final class ImmutableLinkedList implements ImmutableList {
 
         Object[] reservedArray = Arrays.copyOf(this.toArray(), this.length);
         Object[] newArray = new Object[this.length - 1];
-
-        for (int i = 0, j = 0; i < this.length; i++) {
+        int j = 0;
+        for (int i = 0; i < this.length; i++) {
             if (i == index) {
                 continue;
             }
@@ -135,9 +137,8 @@ public final class ImmutableLinkedList implements ImmutableList {
     @Override
     public int indexOf(Object e) {
         Object[] array = Arrays.copyOf(this.toArray(), this.length);
-
         for (int i = 0; i < this.length; i++) {
-            if (array[i].equals(e)){
+            if (array[i].equals(e)) {
                 return i;
             }
         }
@@ -178,8 +179,9 @@ public final class ImmutableLinkedList implements ImmutableList {
         Object[] reservedArray = Arrays.copyOf(this.toArray(), this.length);
         Object[] newArray = new Object[this.length + 1];
 
+        int j = 0;
         newArray[0] = e;
-        for (int i = 1, j = 0; i <= this.length ; i++) {
+        for (int i = 1; i <= this.length; i++) {
             newArray[i] = reservedArray[j];
             j++;
         }
@@ -192,7 +194,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         Object[] newArray = new Object[this.length + 1];
 
         newArray[this.length] = e;
-        for (int i = 0; i < this.length ; i++) {
+        for (int i = 0; i < this.length; i++) {
             newArray[i] = reservedArray[i];
         }
         return new ImmutableLinkedList(newArray);
@@ -239,24 +241,5 @@ public final class ImmutableLinkedList implements ImmutableList {
 
         Object[] newArray = Arrays.copyOf(this.toArray(), this.length - 1);
         return new ImmutableLinkedList(newArray);
-    }
-
-    public static void main(String[] args) {
-        ImmutableLinkedList list = new ImmutableLinkedList(new Object[] {1, 2, 3});
-//        ImmutableList list1 = list.addAll(new Object[] {4, 4});
-        ImmutableList list1 = list.set(2, 1000);
-        ImmutableList list2 = list.addLast(12345);
-        ImmutableList list3 = list.addLast(123456789);
-        ImmutableList list4 = list.removeLast();
-
-
-
-        System.out.println(Arrays.toString(list.toArray()));
-        System.out.println(Arrays.toString(list1.toArray()));
-        System.out.println(Arrays.toString(list3.toArray()));
-        System.out.println(Arrays.toString(list4.toArray()));
-
-        System.out.println(list3.get(3));
-
     }
 }
