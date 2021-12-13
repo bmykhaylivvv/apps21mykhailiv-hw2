@@ -1,14 +1,25 @@
 package ua.edu.ucu.collections;
 
+import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
+
 public class Stack {
+
+    private ImmutableLinkedList linkedList;
+    public Stack() {
+        this.linkedList = new ImmutableLinkedList();
+    }
+
     public void push(Object e) {
+        this.linkedList = this.linkedList.addLast(e);
     }
 
     public Object pop() {
-        return null;
+        Object poppedElement = this.linkedList.getLast();
+        this.linkedList = this.linkedList.removeLast();
+        return poppedElement;
     }
 
     public Object peek() {
-        return null;
+        return this.linkedList.getLast();
     }
 }

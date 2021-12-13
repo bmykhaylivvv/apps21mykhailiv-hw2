@@ -1,6 +1,7 @@
 package ua.edu.ucu.collections.immutable;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public final class ImmutableLinkedList implements ImmutableList {
     private Node head;
@@ -91,37 +92,73 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public Object get(int index) {
-        return null;
+        if (index < 0 || index > this.length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] array = Arrays.copyOf(this.toArray(), this.length);
+        return array[index];
     }
 
     @Override
     public ImmutableList remove(int index) {
-        return null;
+        if (index < 0 || index > this.length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] reservedArray = Arrays.copyOf(this.toArray(), this.length);
+        Object[] newArray = new Object[this.length - 1];
+
+        for (int i = 0, j = 0; i < this.length; i++) {
+            if (i == index) {
+                continue;
+            }
+
+            newArray[j] = reservedArray[i];
+            j++;
+        }
+        return new ImmutableLinkedList(newArray);
     }
 
     @Override
     public ImmutableList set(int index, Object e) {
-        return null;
+        if (index < 0 || index > this.length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] array = Arrays.copyOf(this.toArray(), this.length);
+        array[index] = e;
+
+        return new ImmutableLinkedList(array);
     }
 
     @Override
     public int indexOf(Object e) {
-        return 0;
+        Object[] array = Arrays.copyOf(this.toArray(), this.length);
+
+        for (int i = 0; i < this.length; i++) {
+            if (array[i].equals(e)){
+                return i;
+            }
+        }
+
+        throw new NoSuchElementException();
     }
 
     @Override
     public int size() {
-        return 0;
+        return this.length;
     }
 
     @Override
     public ImmutableList clear() {
-        return null;
+        Object[] cleanedArray = new Object[this.length];
+        return new ImmutableLinkedList(cleanedArray);
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.length == 0;
     }
 
     @Override
@@ -138,11 +175,27 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList addFirst(Object e) {
-        return null;
+        Object[] reservedArray = Arrays.copyOf(this.toArray(), this.length);
+        Object[] newArray = new Object[this.length + 1];
+
+        newArray[0] = e;
+        for (int i = 1, j = 0; i <= this.length ; i++) {
+            newArray[i] = reservedArray[j];
+            j++;
+        }
+        this.length++;
+        return new ImmutableLinkedList(newArray);
     }
 
     public ImmutableLinkedList addLast(Object e) {
-        return null;
+        Object[] reservedArray = Arrays.copyOf(this.toArray(), this.length);
+        Object[] newArray = new Object[this.length + 1];
+
+        newArray[this.length] = e;
+        for (int i = 0; i < this.length ; i++) {
+            newArray[i] = reservedArray[i];
+        }
+        return new ImmutableLinkedList(newArray);
     }
 
     public Node getHead() {
@@ -150,32 +203,60 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public Node getTail() {
-        return null;
+        return this.tail;
     }
 
     public Object getFirst() {
-        return null;
+        if (this.head == null) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return this.head.getValue();
     }
 
     public Object getLast() {
-        return null;
+        if (this.tail == null) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return this.tail.getValue();
     }
 
     public ImmutableLinkedList removeFirst() {
-        return null;
+        if (this.length == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] newArray = Arrays.copyOfRange(this.toArray(), 1, this.length);
+        return new ImmutableLinkedList(newArray);
     }
 
     public ImmutableLinkedList removeLast() {
-        return null;
+        if (this.length == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+
+        Object[] newArray = Arrays.copyOf(this.toArray(), this.length - 1);
+        return new ImmutableLinkedList(newArray);
     }
 
     public static void main(String[] args) {
         ImmutableLinkedList list = new ImmutableLinkedList(new Object[] {1, 2, 3});
 //        ImmutableList list1 = list.addAll(new Object[] {4, 4});
-        ImmutableList list1 = list.add(1, 4);
+        ImmutableList list1 = list.set(2, 1000);
+        ImmutableList list2 = list.addLast(12345);
+        ImmutableList list3 = list.addLast(123456789);
+        ImmutableList list4 = list.removeLast();
+
+
 
         System.out.println(Arrays.toString(list.toArray()));
         System.out.println(Arrays.toString(list1.toArray()));
+        System.out.println(Arrays.toString(list3.toArray()));
+        System.out.println(Arrays.toString(list4.toArray()));
+
+        System.out.println(list3.get(3));
 
     }
 }
