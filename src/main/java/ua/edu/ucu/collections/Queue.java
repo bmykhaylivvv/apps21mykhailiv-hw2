@@ -1,6 +1,5 @@
 package ua.edu.ucu.collections;
 
-import ua.edu.ucu.collections.immutable.ImmutableArrayList;
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 
 public class Queue {
